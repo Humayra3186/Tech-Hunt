@@ -14,7 +14,7 @@ const AuthProvider = ({children}) => {
 
     const[photo , setPhoto]= useState("")
     const [user , setUser] = useState('')
-    const [load , setLoader]= useState(true)
+    const [loader , setLoader]= useState(true)
 
     //create user
     const createUser =(email, password)=>{
@@ -80,7 +80,7 @@ const AuthProvider = ({children}) => {
        
  
 
-    const info = {createUser,updateUser,login,google,logOut,user,setUser,photo,setPhoto,load,setLoader}
+    const info = {createUser,updateUser,login,google,logOut,user,setUser,photo,setPhoto,loader,setLoader}
 
     return (
        <AuthContext.Provider value={info}>
