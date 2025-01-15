@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.lota{
+    font-family: "Lobster", serif;
+}
+.lemon{
+    color: #69a533;
+}
+.btn-color{
+    background-color: #69a533;
+    color: white;
+}
