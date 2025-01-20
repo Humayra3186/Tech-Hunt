@@ -3,33 +3,70 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 import logo from "../assets/img/Google.webp"
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Login = () => {
 
-    const {login,google,setUser , setLoader , setPhoto} = useContext(AuthContext)
-    const [error,setError] = useState("")
+    const { login, google, setUser, setLoader, setPhoto } = useContext(AuthContext)
+    const [error, setError] = useState("")
+
+    const axiosPublic = useAxiosPublic()
 
     const navigate = useNavigate()
 
-    const handleSubmit = e =>{
+
+    // login 
+
+    const handleSubmit = e => {
         setError("")
         e.preventDefault()
-        const form = e.target 
-        const email = form.email.value 
+        const form = e.target
+        const email = form.email.value
         const password = form.password.value
-        
-        login(email,password)
-        .then((userCredential) => {
-            setLoader(false)
-            setUser(userCredential.user)
-            setPhoto(userCredential.user?.photoURL)
-            navigate("/")
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            setError(errorMessage)
-            setLoader(false)
-          });
+
+        login(email, password)
+            .then((userCredential) => {
+                setLoader(false)
+                setUser(userCredential.user)
+                setPhoto(userCredential.user?.photoURL)
+                navigate("/")
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setError(errorMessage)
+                setLoader(false)
+            });
+
+    }
+
+
+    //google login
+
+    const handleGoogle = () => {
+        google()
+            .then((userCredential) => {
+                setLoader(false)
+                setUser(userCredential.user)
+                setPhoto(userCredential.user?.photoURL)
+                navigate("/")
+
+                const photo = userCredential.user?.photoURL
+                const email = userCredential.user?.email
+                const name =userCredential.user?.displayName
+                const role = "user"
+
+                const userInfo = { name, email, photo, role }
+                axiosPublic.post("/user", userInfo)
+                    .then(res => {
+                        console.log(res.data)
+
+                    })
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setError(errorMessage)
+                setLoader(false)
+            });
 
     }
 
@@ -56,8 +93,8 @@ const Login = () => {
                     </div>
                     {/* error message */}
                     <div className='text-[0.8rem] text-red-600'>
-                            {error}
-                        </div>
+                        {error}
+                    </div>
 
 
                     <div className="form-control mt-6">
@@ -67,14 +104,14 @@ const Login = () => {
                 </form>
             </div>
 
-           
-                <div className="divider w-[35%] mx-auto my-[2rem]">OR</div>
 
-                <button  className='flex items-center gap-4  border shadow-md px-[3rem] mb-[4rem]'>
-                    <img className='w-[3rem]' src={logo} alt="" />
-                    <h3>Login with Google</h3>
-                </button>
-               
+            <div className="divider w-[35%] mx-auto my-[2rem]">OR</div>
+
+            <button onClick={handleGoogle} className='flex items-center gap-4  border shadow-md px-[3rem] mb-[4rem]'>
+                <img className='w-[3rem]' src={logo} alt="" />
+                <h3>Login with Google</h3>
+            </button>
+
         </div>
     );
 };
