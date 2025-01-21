@@ -5,6 +5,9 @@ import Login from '../Pages/login';
 import Register from '../Pages/Register';
 import Products from '../Pages/Products/Products';
 import MainPage from '../MainLayout/MainPage';
+import Dashboard from '../Pages/DashBoard/Dashboard';
+import Profile from '../Pages/DashBoard/User/Profile';
+import PrivetRoute from '../private/PrivetRoute';
 
 const router = createBrowserRouter([
     {
@@ -29,6 +32,16 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path: "dashboard",
+      element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
+      children : [
+        {
+          path: "dashboard/profile",
+          element :<PrivetRoute> <Profile></Profile></PrivetRoute>
+        }
+      ]
+    }
     
   ]);
 

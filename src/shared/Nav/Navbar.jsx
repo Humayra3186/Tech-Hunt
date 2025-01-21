@@ -17,19 +17,19 @@ const Navbar = () => {
   const link = <>
 
 
-    <NavLink className="flex items-center mr-[4rem] text-[1.1rem] font-bold text-gray-600" to={"/"}><FaHome></FaHome> Home</NavLink>
+    <NavLink className="flex items-center mr-[4rem] text-[1rem] font-bold text-gray-600" to={"/"}><FaHome></FaHome> Home</NavLink>
 
 
-    <NavLink className="flex items-center mr-[4rem] text-[1.1rem] font-bold text-gray-600" to={"products"}><AiFillProduct></AiFillProduct> Products</NavLink>
+    <NavLink className="flex items-center mr-[4rem] text-[1rem] font-bold text-gray-600" to={"products"}><AiFillProduct></AiFillProduct> Products</NavLink>
 
   </>
 
 
   return (
-    <div className='fixed shadow-md w-full py-1 backdrop-blur-sm  z-10'>
+    <div className='fixed shadow-md w-full  backdrop-blur-sm  z-10'>
       <div className="navbar w-[85%]  mx-auto ">
         <div className="navbar-start">
-          <div className={`bg-[#fdfdfdf2] backdrop-blur-lg p-4 lg:hidden absolute   duration-[600ms]  pt-4 pl-7 w-48 top-[5.4rem] h-screen ${open ? "  left-0" : "left-[-13rem]"}`}>
+          <div className={`bg-[#fdfdfdf2] backdrop-blur-lg p-4 lg:hidden absolute   duration-[600ms]  pt-4 pl-7 w-48 top-[4.4rem] h-screen ${open ? "  left-0" : "left-[-13rem]"}`}>
 
             <ul className='text-[1.2rem]  md:text-[0.9rem] flex flex-col items-center gap-6  '>
               <div>
@@ -53,10 +53,11 @@ const Navbar = () => {
 
           {/* logo */}
           <div className='w-auto  flex items-end '>
-            <SiTechcrunch className='text-[3.7rem] text-black'></SiTechcrunch>
+            <SiTechcrunch className='text-[3rem] text-black'></SiTechcrunch>
             <div>
-              <HiMiniArrowTrendingUp className='text-[1.6rem] pt-[-1] font-extrabold text-black  '></HiMiniArrowTrendingUp>
-              <h1 className='text-[1.4rem] pl-1 pb-1 font-semibold text-[#69a533] font-serif'>  hunt </h1>
+              <HiMiniArrowTrendingUp className='text-[1.4rem] pt-[-1] font-extrabold text-black  '></HiMiniArrowTrendingUp>
+              
+              <h1 className='text-[1.2rem] pl-1 pb-1 font-semibold text-[#69a533] font-serif'>  hunt </h1>
 
             </div>
           </div>

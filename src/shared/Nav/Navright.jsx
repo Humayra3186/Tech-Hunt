@@ -29,12 +29,12 @@ const Navright = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-5 w-52 p-4 shadow relative right-[0]">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-4 shadow relative right-[0]">
                         <div>
                            <h2 className="text-black  font-semibold text-[1.2rem]  md:text-[0.9rem]">{user?.displayName}</h2>
                         </div>
                         <div  className='mt-2'>
-                            <NavLink className="text-black hover:text-[#69a533] font-semibold text-[1.2rem]  md:text-[0.9rem]" >Dashboard</NavLink>
+                            <NavLink to="dashboard" className="text-black hover:text-[#69a533] font-semibold text-[1.2rem]  md:text-[0.9rem]" >Dashboard</NavLink>
                         </div>
                         <div  className='mt-2'>
                            <button onClick={()=>{logOut()}}  className="text-[#69a533] flex items-center gap-2 font-semibold text-[1.2rem]  md:text-[0.9rem]"  >LogOut<HiArrowLeftStartOnRectangle className='text-[1.3rem]'></HiArrowLeftStartOnRectangle></button>
@@ -45,8 +45,8 @@ const Navright = () => {
 
             </> :
                 <>
-                    <Link to={"register"}><button className='btn-color py-2 px-4 mr-5'>SignUp</button></Link>
-                    <Link to={"login"}><button className='btn-color py-2 px-4'>SignIn</button></Link></>}
+                    <Link to={"register"}><button className='btn-color py-1 px-4 mr-5'>SignUp</button></Link>
+                    <Link to={"login"}><button className='btn-color py-1 px-4'>SignIn</button></Link></>}
         </div>
     );
 };
