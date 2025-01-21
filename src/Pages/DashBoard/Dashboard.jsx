@@ -3,8 +3,9 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { SiTechcrunch } from 'react-icons/si';
 import { HiMiniArrowTrendingUp } from 'react-icons/hi2';
-import { MdOutlineArrowForwardIos, MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { FaRegUser, FaUser } from 'react-icons/fa';
+import {  MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import {  FaUser } from 'react-icons/fa';
+import { RiChatUploadFill } from "react-icons/ri";
 
 const Dashboard = () => {
     const {photo,user} = useContext(AuthContext)
@@ -32,12 +33,14 @@ const Dashboard = () => {
 
                   {/* routes */}
                   <NavLink to={"dashboard/profile"} className="flex items-center md:gap-2 text-[0.9rem] font-semibold text-slate-500"><FaUser className='text-[0.87rem]'></FaUser>My Profile</NavLink>
+
+                  <NavLink to={"dashboard/add"} className="flex items-center md:gap-2 text-[0.9rem] font-semibold text-slate-500"><RiChatUploadFill className='text-[0.87rem]'></RiChatUploadFill>Add Product</NavLink>
         </div>
 
  
                        
 
-        <div className='flex-1  bg-base-200  min-h-full '>
+        <div className='flex-1    min-h-full '>
 
 
 

@@ -8,6 +8,7 @@ import MainPage from '../MainLayout/MainPage';
 import Dashboard from '../Pages/DashBoard/Dashboard';
 import Profile from '../Pages/DashBoard/User/Profile';
 import PrivetRoute from '../private/PrivetRoute';
+import Add from '../Pages/DashBoard/User/Add';
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         {
           path: "dashboard/profile",
           element :<PrivetRoute> <Profile></Profile></PrivetRoute>
+        },
+        {
+          path: "dashboard/add",
+          element :<PrivetRoute> <Add></Add></PrivetRoute>
         }
       ]
     }

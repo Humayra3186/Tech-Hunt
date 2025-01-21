@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import bg from "../../../assets/img/profilebg.jpg"
+import bg from "../../../assets/img/add bg.jpg"
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { GiClick } from "react-icons/gi";
 
