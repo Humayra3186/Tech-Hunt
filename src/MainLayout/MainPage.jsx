@@ -4,6 +4,7 @@ import Navbar from '../shared/Nav/Navbar';
 import Footer from '../shared/Footer/Footer';
 import { AuthContext } from '../Provider/AuthProvider';
 
+
 const MainPage = () => {
     const{ setOpen} = useContext(AuthContext)
     const handleMenu =()=>{
@@ -11,6 +12,7 @@ const MainPage = () => {
     }
     return (
         <div>
+             
            <Navbar></Navbar>
             <div onClick={handleMenu}>
             <Outlet></Outlet>

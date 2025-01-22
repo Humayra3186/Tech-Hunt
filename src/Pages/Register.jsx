@@ -47,8 +47,9 @@ const Register = () => {
         const name = data.name
         const password = data.password
         const role = "user"
+        const subscripe = false
 
-        const userInfo = {name,email,photo,role}
+        const userInfo = {name,email,photo,role,subscripe}
 
         createUser(email,password)
         .then((userCredential) => {

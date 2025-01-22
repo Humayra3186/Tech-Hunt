@@ -9,6 +9,7 @@ import Dashboard from '../Pages/DashBoard/Dashboard';
 import Profile from '../Pages/DashBoard/User/Profile';
 import PrivetRoute from '../private/PrivetRoute';
 import Add from '../Pages/DashBoard/User/Add';
+import AddedProduct from '../Pages/DashBoard/User/AddedProduct';
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
         {
           path: "dashboard/add",
           element :<PrivetRoute> <Add></Add></PrivetRoute>
+        },
+        {
+          path: "dashboard/addedProduct",
+          element :<PrivetRoute> <AddedProduct></AddedProduct></PrivetRoute>
         }
       ]
     }

@@ -6,11 +6,15 @@ import { HiMiniArrowTrendingUp } from 'react-icons/hi2';
 import {  MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import {  FaUser } from 'react-icons/fa';
 import { RiChatUploadFill } from "react-icons/ri";
+import { Toaster } from 'react-hot-toast';
 
 const Dashboard = () => {
     const {photo,user} = useContext(AuthContext)
     return (
         <div className='flex'> 
+          <Toaster
+       position="top-center"
+       reverseOrder={false} />
 
                     {/* side bar */}
 
