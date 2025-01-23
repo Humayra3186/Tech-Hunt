@@ -11,6 +11,7 @@ import useUser from '../../../Hooks/useUser';
 import toast, { Toaster } from 'react-hot-toast';
 
 
+
 const Add = () => {
     const {user} = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
@@ -50,9 +51,10 @@ const Add = () => {
         const ownerImg = user?.photoURL
         const vote = 0;
         const status = "pending"
+        const featured = false
         const date = new Date()
 
-        const productInfo = {proName,proImg,description,link,tags,ownerEmail,ownerName,ownerImg,date,vote, status}
+        const productInfo = {proName,proImg,description,link,tags,ownerEmail,ownerName,ownerImg,date,vote, status,featured}
 
         if(!userInfo?.subscripe && products?.length > 0){
             return(toast.error("Sry! Unable to add more.",{
@@ -105,7 +107,7 @@ const Add = () => {
             {/* tittle */}
            
             <Zoom triggerOnce={false}>
-            <h1 className='text-center  gap-3 flex items-center justify-center text-[1.5rem]  md:text-[2.2rem] pt-10 font-bold text-white '><span className='text-[#69a533]'>---</span>Add Your Product <span className='text-[#69a533]'>---</span></h1>
+            <h1 className='text-center  gap-3 flex items-center justify-center text-[1.5rem]  md:text-[2.2rem] pt-10 font-bold text-white '><span className='text-[#69a533]'>---</span>Add Product <span className='text-[#69a533]'>---</span></h1>
             </Zoom>
             
             <p className='text-center text-[0.8rem] md:text-[0.9rem] text-[#ffffffc1] mb-9'>To add more than one product you have to get <br />membership first</p>
@@ -173,7 +175,7 @@ const Add = () => {
                             value={selected}
                             onChange={setSelected}
                             name="features"
-                            placeHolder="enter features"
+                            placeHolder="press enter to add tags"
                         />
                     </div>
                     <div className="form-control">
