@@ -7,23 +7,47 @@ import { MdDelete } from "react-icons/md";
 import { AuthContext } from '../../../Provider/AuthProvider';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
+import swal from 'sweetalert';
+
+
 
 const AddedProduct = () => {
-    const [data,isPending]= useProduct()
+    const [data, refetch] = useProduct()
     const axiosSecure = useAxiosSecure()
 
     // delete
 
-   const handleDelete = id =>{
-     
-    axiosSecure.delete(`product/${id}`)
-    .then(res =>{
-        console.log(res.data)
-    })
-    
-   }
-   
-    
+    const handleDelete = id => {
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axiosSecure.delete(`product/${id}`)
+                        .then(res => {
+                            if (res.data.deletedCount) {
+
+                                refetch()
+                                swal("Successfully Deleted!", {
+                                    icon: "success",
+                                });
+
+                            }
+                        })
+                  
+                }
+            });
+
+
+
+    }
+
+
     return (
         <div style={{
             backgroundImage: `url(${bg})`,
@@ -40,47 +64,47 @@ const AddedProduct = () => {
             {/* table */}
 
             <div className="overflow-x-auto mt-16">
-            <table className="table border">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th className='text-white text-[1rem]'>Name</th>
-                        <th className='text-white text-[1rem]' >Votes</th>
-                        <th className='text-white text-[1rem]'>Status</th>
-                        <th className='text-white text-[1rem]'>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
+                <table className="table border">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th className='text-white text-[1rem]'>Name</th>
+                            <th className='text-white text-[1rem]' >Votes</th>
+                            <th className='text-white text-[1rem]'>Status</th>
+                            <th className='text-white text-[1rem]'>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
 
-                    {/* row 1 */}
+                        {/* row 1 */}
 
-                    {data?.map((product,index)=>
+                        {data?.map((product, index) =>
 
-                        <tr className="hover:bg-base-200">
-                        <th>{index+1}</th>
-                        <td>{product?.proName}</td>
-                        <td>{product?.vote}</td>
-                        <td>{product?.status}</td>
-                        <td className='flex'>
-                           <button>
-                           <HiPencilSquare className='text-[1.4rem]'></HiPencilSquare>
-                           </button>
-                           <button onClick={()=>{handleDelete(product._id)}} className='ml-6'>
-                           <MdDelete className='text-[1.4rem]  '></MdDelete>
-                           </button>
-                            </td>
-                    </tr>
-                    )}
+                            <tr key={index} className="hover:bg-base-200">
+                                <th>{index + 1}</th>
+                                <td>{product?.proName}</td>
+                                <td>{product?.vote}</td>
+                                <td>{product?.status}</td>
+                                <td className='flex'>
+                                    <button>
+                                        <HiPencilSquare className='text-[1.4rem]'></HiPencilSquare>
+                                    </button>
+                                    <button onClick={() => { handleDelete(product._id) }} className='ml-6'>
+                                        <MdDelete className='text-[1.4rem]  '></MdDelete>
+                                    </button>
+                                </td>
+                            </tr>
+                        )}
 
-                
-                 
-                   
-                </tbody>
-            </table>
-        </div>
-          
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     );
 };
