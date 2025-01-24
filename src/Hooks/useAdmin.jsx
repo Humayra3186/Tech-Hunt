@@ -8,7 +8,7 @@ const useAdmin = () => {
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
     const email = user?.email
-    const { data,isPending } = useQuery({
+    const { data:isAdmin,isPending } = useQuery({
         queryKey: ['isAdmin', email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/admin/${email}`)
@@ -18,7 +18,7 @@ const useAdmin = () => {
 
     })
 
-    return [data,isPending]
+    return [isAdmin,isPending]
 
 };
 

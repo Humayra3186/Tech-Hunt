@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import useAdmin from '../Hooks/useAdmin';
-import { AuthContext } from '../Provider/AuthProvider';
 import { Navigate } from 'react-router-dom';
+import useModerator from '../Hooks/useModerator';
+import { AuthContext } from '../Provider/AuthProvider';
 
-const AdminRoute = ({ children }) => {
-
-    const [isAdmin, isPending] = useAdmin()
+const ModeratorRoute = ({children}) => {
+    const [isModerator , isPending] = useModerator()
     const { user, loader } = useContext(AuthContext)
 
 
@@ -17,7 +16,7 @@ const AdminRoute = ({ children }) => {
         )
     }
 
-    if (user && isAdmin?.isAdmin) {
+    if (user && isModerator?.isModerator) {
         return (
             children
         )
@@ -29,6 +28,7 @@ const AdminRoute = ({ children }) => {
     return (
         <Navigate to={'/login'}></Navigate>
     );
+
 };
 
-export default AdminRoute;
+export default ModeratorRoute;

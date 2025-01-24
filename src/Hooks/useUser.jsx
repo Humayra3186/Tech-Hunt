@@ -10,7 +10,7 @@ const useUser = () => {
     const [userInfo , setuserInfo] = useState([])
 
    useEffect(()=>{
-    axiosSecure.get(`/users?email=${email}`)
+    axiosSecure.get(`/user?email=${email}`)
     .then(res =>{
         setuserInfo(res.data[0])
     })

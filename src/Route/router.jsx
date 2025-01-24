@@ -13,6 +13,9 @@ import AddedProduct from '../Pages/DashBoard/User/AddedProduct';
 import UpdateProduct from '../Pages/DashBoard/User/UpdateProduct';
 import { Manipulation } from 'swiper/modules';
 import ManageUser from '../Pages/DashBoard/Admin/ManageUser';
+import AdminRoute from '../private/AdminRoute';
+import ManageCoupons from '../Pages/DashBoard/Admin/ManageCoupons';
+import Statistics from '../Pages/DashBoard/Admin/Statistics';
 
 const router = createBrowserRouter([
     {
@@ -42,7 +45,7 @@ const router = createBrowserRouter([
       element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
       children : [
         {
-          path: "/dashboard",
+          path: "/dashboard/profile",
           element :<PrivetRoute> <Profile></Profile></PrivetRoute>
         },
        
@@ -60,7 +63,15 @@ const router = createBrowserRouter([
         },
         {
           path: "dashboard/manageUser",
-          element :<PrivetRoute> <ManageUser></ManageUser></PrivetRoute>
+          element :<PrivetRoute> <AdminRoute><ManageUser></ManageUser></AdminRoute></PrivetRoute>
+        },
+        {
+          path: "dashboard/manageCoupons",
+          element :<PrivetRoute> <AdminRoute><ManageCoupons></ManageCoupons></AdminRoute></PrivetRoute>
+        },
+        {
+          path: "dashboard/statistics",
+          element :<PrivetRoute> <AdminRoute><Statistics></Statistics></AdminRoute></PrivetRoute>
         }
       ]
     }
