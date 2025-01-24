@@ -9,9 +9,11 @@ import { RiChatUploadFill } from "react-icons/ri";
 import { Toaster } from 'react-hot-toast';
 import { PiFilesFill } from "react-icons/pi";
 import { AiFillProduct } from 'react-icons/ai';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Dashboard = () => {
     const {photo,user} = useContext(AuthContext)
+    const [data] = useAdmin()
     return (
         <div className='flex'> 
           <Toaster
@@ -38,11 +40,20 @@ const Dashboard = () => {
                        
 
                   {/* routes */}
-                  <NavLink to={"/dashboard"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><FaUser className='text-[0.87rem] hidden md:block'></FaUser>My Profile</NavLink>
 
-                  <NavLink to={"dashboard/add"} className="flex items-center md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><RiChatUploadFill className='text-[0.87rem] hidden md:block'></RiChatUploadFill>Add Product</NavLink>
+                  {
+                    data?.isAdmin ?<>
+                     <NavLink to={"dashboard/manageUser"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>Manage User</NavLink>
+                    </> : <>
+                    <NavLink to={"/dashboard"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><FaUser className='text-[0.87rem] hidden md:block'></FaUser>My Profile</NavLink>
 
-                  <NavLink to={"dashboard/addedProduct"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>My Products</NavLink>
+<NavLink to={"dashboard/add"} className="flex items-center md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><RiChatUploadFill className='text-[0.87rem] hidden md:block'></RiChatUploadFill>Add Product</NavLink>
+
+<NavLink to={"dashboard/addedProduct"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>My Products</NavLink></>
+                  }
+                 
+
+                 
 
 
                   <p className='text-center text-gray-500 border-t-1 border-b-1 border border-l-0 border-r-0 my-[4rem]'>

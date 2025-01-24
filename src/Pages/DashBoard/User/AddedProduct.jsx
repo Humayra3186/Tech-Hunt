@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import bg from "../../../assets/img/add bg.jpg"
 import { Zoom } from 'react-awesome-reveal';
 import useProduct from '../../../Hooks/useProduct';
@@ -8,12 +8,14 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 
 
 
 const AddedProduct = () => {
     const [data, refetch] = useProduct()
     const axiosSecure = useAxiosSecure()
+    
 
     // delete
 
@@ -88,9 +90,9 @@ const AddedProduct = () => {
                                 <td>{product?.vote}</td>
                                 <td>{product?.status}</td>
                                 <td className='flex'>
-                                    <button>
+                                   <Link to={`/dashboard/dashboard/updateProduct/${product?._id}`}> <button>
                                         <HiPencilSquare className='text-[1.4rem]'></HiPencilSquare>
-                                    </button>
+                                    </button></Link>
                                     <button onClick={() => { handleDelete(product._id) }} className='ml-6'>
                                         <MdDelete className='text-[1.4rem]  '></MdDelete>
                                     </button>

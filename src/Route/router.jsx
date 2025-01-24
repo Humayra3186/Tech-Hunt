@@ -10,6 +10,9 @@ import Profile from '../Pages/DashBoard/User/Profile';
 import PrivetRoute from '../private/PrivetRoute';
 import Add from '../Pages/DashBoard/User/Add';
 import AddedProduct from '../Pages/DashBoard/User/AddedProduct';
+import UpdateProduct from '../Pages/DashBoard/User/UpdateProduct';
+import { Manipulation } from 'swiper/modules';
+import ManageUser from '../Pages/DashBoard/Admin/ManageUser';
 
 const router = createBrowserRouter([
     {
@@ -50,6 +53,14 @@ const router = createBrowserRouter([
         {
           path: "dashboard/addedProduct",
           element :<PrivetRoute> <AddedProduct></AddedProduct></PrivetRoute>
+        },
+        {
+          path: "dashboard/updateProduct/:id",
+          element :<PrivetRoute> <UpdateProduct></UpdateProduct></PrivetRoute>
+        },
+        {
+          path: "dashboard/manageUser",
+          element :<PrivetRoute> <ManageUser></ManageUser></PrivetRoute>
         }
       ]
     }
