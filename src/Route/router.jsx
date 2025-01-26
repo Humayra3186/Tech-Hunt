@@ -16,6 +16,7 @@ import ManageUser from '../Pages/DashBoard/Admin/ManageUser';
 import AdminRoute from '../private/AdminRoute';
 import ManageCoupons from '../Pages/DashBoard/Admin/ManageCoupons';
 import Statistics from '../Pages/DashBoard/Admin/Statistics';
+import Payment from '../payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
         {
           path: "dashboard/addedProduct",
           element :<PrivetRoute> <AddedProduct></AddedProduct></PrivetRoute>
+        },
+        {
+          path: "dashboard/payment",
+          element :<PrivetRoute> <Payment></Payment></PrivetRoute>
         },
         {
           path: "dashboard/updateProduct/:id",

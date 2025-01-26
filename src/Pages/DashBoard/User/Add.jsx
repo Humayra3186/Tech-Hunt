@@ -72,7 +72,10 @@ const Add = () => {
         }
 
         
-        
+        if (selected.length === 0) {
+            toast.error("Please add at least one tag.");
+            return;
+          }
 
           
         // navigate("/dashboard/dashboard/addedProduct")

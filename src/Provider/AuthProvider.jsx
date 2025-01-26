@@ -12,7 +12,7 @@ const AuthProvider = ({children}) => {
 
     const provider = new GoogleAuthProvider();
 
-
+    const [payment,setPayment] = useState(200)
     const[photo , setPhoto]= useState("")
     const [user , setUser] = useState('')
     const [loader , setLoader]= useState(true)
@@ -101,7 +101,7 @@ const AuthProvider = ({children}) => {
        
  
 
-    const info = {createUser,updateUser,login,google,logOut, open,setOpen,user,setUser,photo,setPhoto,loader,setLoader}
+    const info = {createUser,updateUser,login,google,logOut, open,setOpen,user,setUser,photo,setPhoto,loader,setLoader,payment,setPayment}
 
     return (
        <AuthContext.Provider value={info}>

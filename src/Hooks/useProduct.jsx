@@ -7,11 +7,11 @@ import useAxiosSecure from "./useAxiosSecure";
 const useProduct = () => {
     const {user} = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
-    const email =user?.email
+    const email = user?.email
     const {data, isPending,refetch } = useQuery({
         queryKey: ['products',email],
         queryFn: async () =>{
-            const res = await axiosSecure.get(`/products?email=${email}`)
+            const res = await axiosSecure.get(`/products/${email}`)
             return res.data
         }
          

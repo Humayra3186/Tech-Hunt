@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 const AdminRoute = ({ children }) => {
 
     const [isAdmin, isPending] = useAdmin()
-    const { user, loader } = useContext(AuthContext)
+    const { user, loader,logOut } = useContext(AuthContext)
 
 
     if (loader || isPending) {
@@ -27,7 +27,8 @@ const AdminRoute = ({ children }) => {
 
 
     return (
-        <Navigate to={'/login'}></Navigate>
+        logOut()
+        
     );
 };
 

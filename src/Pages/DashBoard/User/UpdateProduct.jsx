@@ -7,6 +7,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import useUser from '../../../Hooks/useUser';
 import { useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const UpdateProduct = () => {
 
@@ -19,7 +20,7 @@ const UpdateProduct = () => {
 
     const [product , setProduct] = useState({})
 
-    console.log(id)
+    
 
     useEffect(()=>{
 
@@ -51,20 +52,23 @@ const UpdateProduct = () => {
         const description = form.description.value
         const link = form.link.value 
         const tags = selected
-        const ownerName = user?.displayName
-        const ownerEmail = user?.email 
-        const ownerImg = user?.photoURL
-        const vote = product?.vote;
-        const status = product?.status
-        const featured = product?.featured
-        const date = product?.date
+       
 
-        const productInfo = {proName,proImg,description,link,tags,ownerEmail,ownerName,ownerImg,date,vote, status,featured}
+        const productInfo = {proName,proImg,description,link,tags}
 
-    //    axiosSecure.put(`/product/${id}`, productInfo)
-    //    .then(res=>{
-    //     console.log(res.data)
-    //    })
+        if (selected.length === 0) {
+            toast.error("Please add at least one tag.");
+            return;
+          }
+
+       axiosSecure.patch(`/product/update/${id}`, productInfo)
+       .then(res=>{
+        if(res.data?.modifiedCount){
+            toast.success("successfully updated")
+            navigate("/dashboard/dashboard/addedProduct")
+        }
+        
+       })
         
         
         
