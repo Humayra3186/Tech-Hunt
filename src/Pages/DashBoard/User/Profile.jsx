@@ -8,7 +8,8 @@ import { MdVerified } from "react-icons/md";
 
 const Profile = () => {
     const {user,payment,setPayment} = useContext(AuthContext)
-    const userInfo = useUser()
+    const [userInfo,loader] = useUser()
+    
     
     return (
         <div >
@@ -28,8 +29,9 @@ const Profile = () => {
                 <div className="divider"></div>
 
                 <h2 className='text-left text-[0.9rem] md:text-[1rem] font-bold flex items-end gap-2 mb-4'>Membership Subscription  <GiClick className='text-amber-400 text-[1.5rem]'></GiClick></h2>
-
-                {
+                 {
+                    loader? <><p>loading...</p></>: <>
+                    {
                     userInfo?.subscripe? <>
                     <MdVerified className='text-[3rem] mb-6 text-[#69a533]'></MdVerified>
                     
@@ -39,7 +41,9 @@ const Profile = () => {
              <button className='btn-color py-1 px-[1.8rem] rounded-lg'>use Coupon</button>
              </div>
                     </>
-                }
+                }</>
+                 }
+                
 
           
              </div>

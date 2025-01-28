@@ -33,10 +33,10 @@ const Navbar = () => {
 
             <ul className='text-[1.2rem]  md:text-[0.9rem] flex flex-col items-center gap-6  '>
               <div>
-                <NavLink className="text-black hover:text-[#C4A484] font-semibold text-[1.2rem]  md:text-[0.9rem]" to={'/'}>Home</NavLink>
+                <NavLink className="text-black hover:text-[#a3cc43] font-semibold text-[1.2rem]  md:text-[0.9rem]" to={'/'}>Home</NavLink>
               </div>
               <div>
-                <NavLink className="text-black hover:text-[#C4A484] font-semibold text-[1.2rem]  md:text-[0.9rem]" to={'rooms'}>Rooms</NavLink>
+                <NavLink className="text-black hover:text-[#a3cc43] font-semibold text-[1.2rem]  md:text-[0.9rem]" to={'products'}>Products</NavLink>
               </div>
             
 

@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Zoom } from 'react-awesome-reveal';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const ProductReview = () => {
 
@@ -135,7 +136,7 @@ const ProductReview = () => {
                                     <tr key={index} className="hover:bg-base-200">
                                         <th>{index + 1}</th>
                                         <td>{product.proName}</td>
-                                        <td><button>View Details</button></td>
+                                        <td><Link to={`/product/${product?._id}`}><button className='text-[#153389] underline'>View Details</button></Link></td>
                                         
                                         <td><button  onClick={() => { handleFeature(product?._id) }}  disabled={product?.featured}  className='text-[#69a533] bg-[#b6ef854d] py-1 px-2'>Make Featured</button></td>
 

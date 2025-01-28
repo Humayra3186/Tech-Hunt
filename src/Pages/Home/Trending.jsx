@@ -38,7 +38,7 @@ const Trending = () => {
                 {
                     data?.map(product => <>
                         <div className='bg-base-200 border-0 border-b-4  border-[#a3cc43] hover:shadow-xl'>
-                            <div className='w-full h-[10rem]'>
+                            <div className='w-full h-[12rem]'>
                                 <Link to={`product/${product._id}`}> <img className='w-full h-full' src={product?.proImg} alt="" /></Link>
                             </div>
                             <div className='py-4 pl-4 '>
@@ -57,7 +57,7 @@ const Trending = () => {
 
             </div>
 
-            <div className='flex justify-center my-8'>
+            <div className='flex justify-center my-12'>
             <Link to={"products"}><button className='text-[#a3cc43] text-[1.3rem] font-semibold'>...Show All Products...</button></Link>
             </div>
         </div>

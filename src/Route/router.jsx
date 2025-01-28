@@ -21,15 +21,19 @@ import ModeratorRoute from '../private/ModeratorRoute';
 import ProductReview from '../Pages/DashBoard/Moderator/ProductReview';
 import Details from '../Pages/Details/Details';
 import Home from '../Pages/Home/Home';
+import Reported from '../Pages/DashBoard/Moderator/Reported';
+import ErrorPage from '../Pages/ErrorPage';
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <MainPage></MainPage>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:"/",
-          element:<Home></Home>
+          element:<Home></Home>,
+          
         },
         {
           path: "products",
@@ -37,7 +41,7 @@ const router = createBrowserRouter([
         },
         {
           path: "product/:id",
-          element: <Details></Details>
+          element: <PrivetRoute><Details></Details></PrivetRoute>
         },
         {
           path: "register",
@@ -89,6 +93,10 @@ const router = createBrowserRouter([
         {
           path: "dashboard/products",
           element :<PrivetRoute><ModeratorRoute><ProductReview></ProductReview></ModeratorRoute></PrivetRoute>
+        },
+        {
+          path: "dashboard/reports",
+          element :<PrivetRoute><ModeratorRoute><Reported></Reported></ModeratorRoute></PrivetRoute>
         }
       ]
     }

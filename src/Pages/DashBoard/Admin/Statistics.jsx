@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import useUsers from '../../../Hooks/useUsers';
+import useProducts from '../../../Hooks/useProducts';
 
 
 
+ 
 
 
 
@@ -14,12 +16,13 @@ import useUsers from '../../../Hooks/useUsers';
 const Statistics = () => {
 
     const [users] = useUsers()
+    const [products] = useProducts()
     
     
 
     const data = [
         { name: "All Users", value: users?.length },
-        { name: "All Products", value: 20 },
+        { name: "All Products", value: products?.length },
         { name: "All Reviews", value: 10 },
        
     ];

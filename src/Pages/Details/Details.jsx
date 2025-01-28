@@ -30,9 +30,7 @@ const Details = () => {
         const email = user?.email
         const data = {id,email}
 
-        if(!user){
-          return  navigate("/login")
-        }
+      
 
         axiosSecure.post("/votes" , data)
         .then(res =>{
@@ -83,9 +81,7 @@ const Details = () => {
             id, name, photo, comment, rate
         }
 
-        if(!user){
-            return  navigate("/login")
-          }
+       
        
         axiosSecure.post("/review" , review)
         .then(res =>{
@@ -106,9 +102,7 @@ const Details = () => {
 
     const handleReport = () =>{
 
-        if(!user){
-            return  navigate("/login")
-          }
+       
 
           swal({
             title: "Are you sure to report this product?",

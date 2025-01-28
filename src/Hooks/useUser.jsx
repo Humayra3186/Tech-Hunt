@@ -8,15 +8,18 @@ const useUser = () => {
     const email = user?.email 
 
     const [userInfo , setuserInfo] = useState([])
+    const [loader,setLoader] = useState(false)
 
    useEffect(()=>{
+    setLoader(true)
     axiosSecure.get(`/user?email=${email}`)
     .then(res =>{
         setuserInfo(res.data[0])
+        setLoader(false)
     })
    },[user])
 
-    return (userInfo) ;
+    return [userInfo,loader] ;
 };
 
 export default useUser;

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { SiTechcrunch } from 'react-icons/si';
-import { HiMiniArrowTrendingUp } from 'react-icons/hi2';
+import { HiArrowLeftStartOnRectangle, HiMiniArrowTrendingUp } from 'react-icons/hi2';
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { FaHome, FaUser } from 'react-icons/fa';
 import { RiChatUploadFill } from "react-icons/ri";
@@ -11,9 +11,12 @@ import { PiFilesFill } from "react-icons/pi";
 import { AiFillProduct } from 'react-icons/ai';
 import useAdmin from '../../Hooks/useAdmin';
 import useModerator from '../../Hooks/useModerator';
+import { HiMiniQueueList } from "react-icons/hi2";
+import { MdReport } from "react-icons/md";
+import { BsFillPieChartFill } from "react-icons/bs";
 
 const Dashboard = () => {
-  const { photo, user, loader } = useContext(AuthContext)
+  const { photo, user, loader ,logOut} = useContext(AuthContext)
   const [data, isPending] = useAdmin()
   const [isModerator, pending] = useModerator()
 
@@ -58,12 +61,13 @@ const Dashboard = () => {
 
             <NavLink to={"dashboard/manageCoupons"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>Manage Coupons</NavLink>
 
-            <NavLink to={"dashboard/statistics"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>Statistics</NavLink>
+            <NavLink to={"dashboard/statistics"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><BsFillPieChartFill className='text-[1rem] hidden md:block'></BsFillPieChartFill>Statistics</NavLink>
 
           </> : <>
             {
               isModerator?.isModerator ? <>
-                  <NavLink to={"dashboard/products"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><FaUser className='text-[0.87rem] hidden md:block'></FaUser>Product Queue</NavLink>
+                <NavLink to={"dashboard/products"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><HiMiniQueueList className='text-[0.87rem] hidden md:block'></HiMiniQueueList>Product Queue</NavLink>
+                <NavLink to={"dashboard/reports"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><MdReport className='text-[0.87rem] hidden md:block'></MdReport>Reported Content</NavLink>
               </> : <>
                 <NavLink to={"/dashboard/profile"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><FaUser className='text-[0.87rem] hidden md:block'></FaUser>My Profile</NavLink>
 
@@ -87,7 +91,7 @@ const Dashboard = () => {
 
 
         <NavLink className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5" to={"/products"}><AiFillProduct className='text-[0.87rem] hidden md:block'></AiFillProduct> Products</NavLink>
-
+        <button onClick={() => { logOut() }} className="text-[#69a533] flex items-center gap-2 font-semibold text-[1.2rem]  md:text-[0.8rem]"  ><HiArrowLeftStartOnRectangle className='text-[1.3rem]'></HiArrowLeftStartOnRectangle>LogOut</button>
       </div>
 
 
