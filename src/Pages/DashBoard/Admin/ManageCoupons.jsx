@@ -42,6 +42,7 @@ const ManageCoupons = () => {
         axiosSecure.post("/coupon" , couponInfo)
         .then(res=>{
             if(res.data?.insertedId){
+                fetchCoupons()
                 form.reset()
                 toast.success("post coupon successfully")
             }
