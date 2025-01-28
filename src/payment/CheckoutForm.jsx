@@ -14,16 +14,18 @@ const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const [error , setError] = useState("")
-    const {payment,user} = useContext(AuthContext)
+    const {payment,user,setPayment} = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
     const [clientSecret,setClientSecret] = useState("")
     const price = payment
     const userInfo = useUser()
     const newData = {newStatus : true}
     const navigate = useNavigate()
+    const [loader , setLoader] = useState(false)
 
 
     useEffect(()=>{
+
 
       axiosSecure.post("/create-payment-intent" , {price})
       .then(res =>{
@@ -35,6 +37,7 @@ const CheckoutForm = () => {
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
+        
         
         if (!stripe || !elements) {
            
@@ -71,30 +74,41 @@ const CheckoutForm = () => {
                 }
             }
         })
-        if (confirmError) {
-            console.log('confirm error')
-        }
+
+        if (paymentIntent?.status === 'succeeded') {
+          setPayment(200)
+          setLoader(false)
+          toast.success("successfully get the membership")
+          navigate("/dashboard/profile")
+          axiosSecure.patch(`/update/status/${user?.email}`,newData)
+          .then(res=>{
+            if(res.data?.modifiedCount>0){
+             setPayment(200)
+              console.log(res.data)
+            }
+          })
+          
+
+      }
+        
+       
         else {
             
-            if (paymentIntent.status === 'succeeded') {
-              axiosSecure.patch(`/updateStatus/${userInfo?.email}`,newData)
-              .then(res=>{
-                if(res.data?.modifiedCount>0){
-                  toast.success("successfully get the membership")
-                  navigate("/dashboard/profile")
-
-                }
-              })
-              
-
-          }
+          if (confirmError) {
+            console.log('confirm error')
+        }
            
           }
         
       
     }
     return (
-       <div style={{
+      <>
+      {
+        loader?<>
+        <p>loading...</p></>:
+        <>
+        <div style={{
                    backgroundImage: `url(${bg})`,
                }}  className='relative md:w-[60%] lg:w-[40%] h-[12rem] py-4 mx-auto  bg-center bg-cover bg-no-repeat rounded-md'>
          <form className=' w-full h-full'  onSubmit={handleSubmit}>
@@ -122,7 +136,11 @@ const CheckoutForm = () => {
      </div>
      
     </form>
-       </div>
+       </div></>
+      }
+      </>
+     
+       
     );
 };
 
