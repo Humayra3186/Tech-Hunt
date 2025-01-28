@@ -10,13 +10,15 @@ import { Toaster } from 'react-hot-toast';
 import { PiFilesFill } from "react-icons/pi";
 import { AiFillProduct } from 'react-icons/ai';
 import useAdmin from '../../Hooks/useAdmin';
+import useModerator from '../../Hooks/useModerator';
 
 const Dashboard = () => {
   const { photo, user, loader } = useContext(AuthContext)
   const [data, isPending] = useAdmin()
-  
+  const [isModerator, pending] = useModerator()
 
-  if (isPending || loader) {
+
+  if (isPending || loader || pending) {
     return <> < div className='h-[20rem] flex justify-center items-center'>
       <span className="loading loading-ring loading-lg"></span>
     </div></>
@@ -59,11 +61,18 @@ const Dashboard = () => {
             <NavLink to={"dashboard/statistics"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>Statistics</NavLink>
 
           </> : <>
-            <NavLink to={"/dashboard/profile"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><FaUser className='text-[0.87rem] hidden md:block'></FaUser>My Profile</NavLink>
+            {
+              isModerator?.isModerator ? <>
+                  <NavLink to={"dashboard/products"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><FaUser className='text-[0.87rem] hidden md:block'></FaUser>Product Queue</NavLink>
+              </> : <>
+                <NavLink to={"/dashboard/profile"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5 mt-[3rem]"><FaUser className='text-[0.87rem] hidden md:block'></FaUser>My Profile</NavLink>
 
-            <NavLink to={"dashboard/add"} className="flex items-center md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><RiChatUploadFill className='text-[0.87rem] hidden md:block'></RiChatUploadFill>Add Product</NavLink>
+                <NavLink to={"dashboard/add"} className="flex items-center md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><RiChatUploadFill className='text-[0.87rem] hidden md:block'></RiChatUploadFill>Add Product</NavLink>
 
-            <NavLink to={"dashboard/addedProduct"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>My Products</NavLink></>
+                <NavLink to={"dashboard/addedProduct"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>My Products</NavLink>
+              </>
+            }
+          </>
         }
 
 

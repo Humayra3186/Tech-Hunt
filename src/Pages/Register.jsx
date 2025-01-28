@@ -26,23 +26,23 @@ const Register = () => {
         setLoader(true)
       
     
-        // image hosting
+        // // image hosting
 
-        const formData = new FormData();
-        formData.append("key", import.meta.env.VITE_IMAGE_HOSTING); 
-        formData.append("image",data.photo[0] ); 
+        // const formData = new FormData();
+        // formData.append("key", import.meta.env.VITE_IMAGE_HOSTING); 
+        // formData.append("image",data.photo[0] ); 
   
-        const res = await axiosPublic.post("https://api.imgbb.com/1/upload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        // const res = await axiosPublic.post("https://api.imgbb.com/1/upload", formData, {
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        // });
 
        
         // all information
 
 
-        const photo = res.data.data.display_url
+        const photo = data.photo
         const email = data.email
         const name = data.name
         const password = data.password
@@ -117,9 +117,9 @@ const Register = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo</span>
+                            <span className="label-text">Photo URL</span>
                         </label>
-                        <input {...register('photo')}  type="file" placeholder="photo"  required />
+                        <input {...register('photo')}  type="text" placeholder="photo" className="input input-bordered"  required />
                     </div>
                       {/* error message */}
                       <div className='text-[0.8rem] text-red-600'>

@@ -1,3 +1,7 @@
 .active{
-    color:#69a533 ;
+    color:#a3cc43 ;
+    text-underline-offset: 2px;
+    padding: 5px 8px;
+    border-radius: 2px;
+    
 }

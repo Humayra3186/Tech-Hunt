@@ -143,7 +143,7 @@ const ManageUser = () => {
                                 <td>{user?.role}</td>
                                 
                                 <td className='flex'>
-                                     <button onClick={()=>{handleModerator(user?._id)}}  disabled={user?.role == "moderator"}  className='btn-color px-2 py-1 rounded-2xl'>
+                                     <button onClick={()=>{handleModerator(user?._id)}}  disabled={user?.role == "moderator" || user?.role == "admin"}  className='btn-color px-2 py-1 rounded-2xl'>
                                         Moderator
                                     </button>
                                     <button onClick={()=>{handleAdmin(user?._id)}}  disabled={user?.role == "admin"} className='btn-color px-6 py-1 rounded-2xl ml-6'  >

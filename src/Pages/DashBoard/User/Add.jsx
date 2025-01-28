@@ -32,7 +32,7 @@ const Add = () => {
 
    useEffect(()=>{
 
-    axiosSecure.get(`/products?email=${user?.email}`)
+    axiosSecure.get(`/products/${user?.email}`)
     .then(res =>{
         setProducts(res.data)
     })
@@ -53,11 +53,13 @@ const Add = () => {
         const ownerEmail = user?.email 
         const ownerImg = user?.photoURL
         const vote = 0;
-        const status = "pending"
+        const status = "pending";
+        const value = 0;
         const featured = false
         const date = new Date()
+        const report = 0;
 
-        const productInfo = {proName,proImg,description,link,tags,ownerEmail,ownerName,ownerImg,date,vote, status,featured}
+        const productInfo = {proName,proImg,report,description,link,tags,ownerEmail,ownerName,ownerImg,date,vote, status,featured,value}
 
         if(!userInfo?.subscripe && products?.length > 0){
             return(toast.error("Sry! Unable to add more.",{
@@ -80,7 +82,7 @@ const Add = () => {
           
         // navigate("/dashboard/dashboard/addedProduct")
 
-        axiosSecure.post("products" , productInfo)
+        axiosSecure.post("/products" , productInfo)
         .then(res =>{
             if(res.data.insertedId){
                 toast.success("Successfully Added.",{

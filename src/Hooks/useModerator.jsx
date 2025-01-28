@@ -7,7 +7,7 @@ const useModerator = () => {
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
     const email = user?.email
-    const { data:isModerator,isPending } = useQuery({
+    const { data:isModerator,isPending:pending } = useQuery({
         queryKey: ['isModerator', email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/moderator/${email}`)
@@ -16,7 +16,7 @@ const useModerator = () => {
 
     })
 
-    return [isModerator,isPending]
+    return [isModerator,pending]
 };
 
 export default useModerator;

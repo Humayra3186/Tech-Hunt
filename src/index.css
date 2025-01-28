@@ -4,14 +4,24 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+.play{
+    font-family: "Playfair Display", serif;
+}
 .lota{
     font-family: "Lobster", serif;
 }
 .lemon{
-    color: #69a533;
+    color: #a3cc43;
 }
 .btn-color{
-    background-color: #69a533;
+    background-color: #a3cc43 ;
+    font-size: 0.9rem;
     color: white;
 }
+button:disabled {
+    background-color: #d6d6d6;
+    color: #999999;
+    cursor: not-allowed;
+  }

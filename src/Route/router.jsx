@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Home from '../Pages/Home/home';
+
 import Login from '../Pages/login';
 import Register from '../Pages/Register';
 import Products from '../Pages/Products/Products';
@@ -17,6 +17,10 @@ import AdminRoute from '../private/AdminRoute';
 import ManageCoupons from '../Pages/DashBoard/Admin/ManageCoupons';
 import Statistics from '../Pages/DashBoard/Admin/Statistics';
 import Payment from '../payment/Payment';
+import ModeratorRoute from '../private/ModeratorRoute';
+import ProductReview from '../Pages/DashBoard/Moderator/ProductReview';
+import Details from '../Pages/Details/Details';
+import Home from '../Pages/Home/Home';
 
 const router = createBrowserRouter([
     {
@@ -30,6 +34,10 @@ const router = createBrowserRouter([
         {
           path: "products",
           element: <Products></Products>
+        },
+        {
+          path: "product/:id",
+          element: <Details></Details>
         },
         {
           path: "register",
@@ -77,6 +85,10 @@ const router = createBrowserRouter([
         {
           path: "dashboard/statistics",
           element :<PrivetRoute> <AdminRoute><Statistics></Statistics></AdminRoute></PrivetRoute>
+        },
+        {
+          path: "dashboard/products",
+          element :<PrivetRoute><ModeratorRoute><ProductReview></ProductReview></ModeratorRoute></PrivetRoute>
         }
       ]
     }

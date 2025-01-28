@@ -17,16 +17,16 @@ const Navbar = () => {
   const link = <>
 
 
-    <NavLink className="flex items-center mr-[4rem] text-[1rem] font-bold text-gray-600" to={"/"}><FaHome></FaHome> Home</NavLink>
+    <NavLink className="flex items-center mr-[2rem] text-[0.9rem] font-semibold text-gray-600 " to={"/"}> Home</NavLink>
 
 
-    <NavLink className="flex items-center mr-[4rem] text-[1rem] font-bold text-gray-600" to={"products"}><AiFillProduct></AiFillProduct> Products</NavLink>
+    <NavLink className="flex items-center mr-[2rem] text-[0.9rem] font-semibold text-gray-600" to={"products"}> Products</NavLink>
 
   </>
 
 
   return (
-    <div className='fixed shadow-md w-full  backdrop-blur-sm  z-10'>
+    <div className='sticky top-0 backdrop-blur-md shadow-xl w-full  z-10'>
       <div className="navbar w-[85%]  mx-auto ">
         <div className="navbar-start">
           <div className={`bg-[#fdfdfdf2] backdrop-blur-lg p-4 lg:hidden absolute   duration-[600ms]  pt-4 pl-7 w-48 top-[4.4rem] h-screen ${open ? "  left-0" : "left-[-13rem]"}`}>
@@ -57,18 +57,19 @@ const Navbar = () => {
             <div>
               <HiMiniArrowTrendingUp className='text-[1.4rem] pt-[-1] font-extrabold text-black  '></HiMiniArrowTrendingUp>
               
-              <h1 className='text-[1.2rem] pl-1 pb-1 font-semibold text-[#69a533] font-serif'>  hunt </h1>
+              <h1 className='text-[1.2rem] pl-1 pb-1 font-semibold text-[#a3cc43] font-serif'>  hunt </h1>
 
             </div>
           </div>
 
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+       
+        <div className="navbar-end">
+        <div className=" hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 flex">
             {link}
           </ul>
         </div>
-        <div className="navbar-end">
           <Navright></Navright>
         </div>
       </div>

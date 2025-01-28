@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import useUsers from '../../../Hooks/useUsers';
+
 
 
 
@@ -13,12 +14,13 @@ import useUsers from '../../../Hooks/useUsers';
 const Statistics = () => {
 
     const [users] = useUsers()
-    console.log(users)
+    
+    
 
     const data = [
-        { name: "Group A", value: users?.length },
-        { name: "Group B", value: 30 },
-        { name: "Group C", value: 10 },
+        { name: "All Users", value: users?.length },
+        { name: "All Products", value: 20 },
+        { name: "All Reviews", value: 10 },
        
     ];
     const COLORS = ['#69a533', '#FDBB2F', '#007CC3'];
@@ -53,16 +55,12 @@ const Statistics = () => {
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
                     </Pie>
+                    <Legend></Legend>
                 </PieChart>
+                
             </ResponsiveContainer>
 
-            <div className='ml-6'>
-                <div>
-                    <p className='flex items-center font-semibold'>Total Products : <span className='text-[#0088FE]  text-[1.4rem] font-bold px-2'>{users?.length}</span></p>
-                    <p className='flex items-center font-semibold'>Total Reviews : <span className='text-[#FDBB2F]  text-[1.4rem] font-bold px-2'>{users?.length}</span></p>
-                    <p className='flex items-center font-semibold'>Total Users : <span className='text-[#69a533]  text-[1.4rem] font-bold px-2'>{users?.length}</span></p>
-                </div>
-            </div>
+            
             
             </div>
     );
