@@ -79,11 +79,12 @@ const CheckoutForm = () => {
         if (paymentIntent?.status === 'succeeded') {
           setPayment(200)
           setLoader(false)
-          toast.success("successfully get the membership")
-          navigate("/dashboard/profile")
-          axiosSecure.patch(`/update/status/${user?.email}`,newData)
+          
+          axiosSecure.patch(`/change/status/${user?.email}`,newData)
           .then(res=>{
             if(res.data?.modifiedCount>0){
+              toast.success("successfully get the membership")
+             navigate("/dashboard/profile")
              setPayment(200)
               console.log(res.data)
             }
