@@ -47,7 +47,7 @@ const Coupon = () => {
                                         <SwiperSlide className=' rounded-lg pb-6 '>
 
 
-                                            <div className='w-[60%] mx-auto shadow-2xl mb-[5rem] '>
+                                            <div className='w-[85%] md:w-[60%] mx-auto shadow-2xl mb-[5rem] '>
 
                                                 <div>
 

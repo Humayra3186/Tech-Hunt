@@ -37,7 +37,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div style={{
                         backgroundImage: `url(${bg01})`,
-                    }} className='h-[30rem] md:h-[37rem] lg:h-[36rem] mx-auto lg:flex items-center justify-center gap-4 bg-center bg-no-repeat bg-cover bg-fixed'>
+                    }} className='h-[30rem] md:h-[37rem] lg:h-[36rem] mx-auto lg:flex items-center justify-center gap-4 bg-center bg-no-repeat bg-cover '>
 
                        <div className='w-full h-full bg-[#1a1a1bba] '>
                        <div className='h-full flex flex-col justify-center  lg:w-[85%]   mx-auto pt-[2rem]      '>
@@ -64,7 +64,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div style={{
                         backgroundImage: `url(${bg02})`,
-                    }} className='h-[30rem] md:h-[37rem] lg:h-[36rem] mx-auto lg:flex items-center justify-center gap-4 bg-center bg-no-repeat bg-cover bg-fixed'>
+                    }} className='h-[30rem] md:h-[37rem] lg:h-[36rem] mx-auto lg:flex items-center justify-center gap-4 bg-center bg-no-repeat bg-cover '>
 
                        <div className='w-full h-full bg-[#1a1a1bba] '>
                        <div className='h-full flex flex-col justify-center  lg:w-[85%]   mx-auto pt-[2rem]      '>
@@ -91,7 +91,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div style={{
                         backgroundImage: `url(${bg03})`,
-                    }} className='h-[30rem] md:h-[37rem] lg:h-[36rem] mx-auto lg:flex items-center justify-center gap-4 bg-center bg-no-repeat bg-cover bg-fixed'>
+                    }} className='h-[30rem] md:h-[37rem] lg:h-[36rem] mx-auto lg:flex items-center justify-center gap-4 bg-center bg-no-repeat bg-cover'>
 
                        <div className='w-full h-full bg-[#1a1a1bba] '>
                        <div className='h-full flex flex-col justify-center  lg:w-[85%]   mx-auto pt-[2rem]      '>
