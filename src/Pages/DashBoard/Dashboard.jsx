@@ -14,6 +14,8 @@ import useModerator from '../../Hooks/useModerator';
 import { HiMiniQueueList } from "react-icons/hi2";
 import { MdReport } from "react-icons/md";
 import { BsFillPieChartFill } from "react-icons/bs";
+import { FaUserFriends } from "react-icons/fa";
+import { RiCoupon2Fill } from "react-icons/ri";
 
 const Dashboard = () => {
   const { photo, user, loader ,logOut} = useContext(AuthContext)
@@ -57,9 +59,9 @@ const Dashboard = () => {
 
         {
           data?.isAdmin ? <>
-            <NavLink to={"dashboard/manageUser"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>Manage User</NavLink>
+            <NavLink to={"dashboard/manageUser"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><FaUserFriends className='text-[1rem] hidden md:block'></FaUserFriends>Manage User</NavLink>
 
-            <NavLink to={"dashboard/manageCoupons"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><PiFilesFill className='text-[1rem] hidden md:block'></PiFilesFill>Manage Coupons</NavLink>
+            <NavLink to={"dashboard/manageCoupons"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><RiCoupon2Fill className='text-[1rem] hidden md:block'></RiCoupon2Fill>Manage Coupons</NavLink>
 
             <NavLink to={"dashboard/statistics"} className="flex items-center  md:gap-2 text-[0.9rem] font-semibold text-slate-500 mb-5"><BsFillPieChartFill className='text-[1rem] hidden md:block'></BsFillPieChartFill>Statistics</NavLink>
 

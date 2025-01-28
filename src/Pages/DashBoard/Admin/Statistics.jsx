@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import useUsers from '../../../Hooks/useUsers';
 import useProducts from '../../../Hooks/useProducts';
+import useReviews from '../../../Hooks/useReviews';
 
 
 
@@ -17,13 +18,14 @@ const Statistics = () => {
 
     const [users] = useUsers()
     const [products] = useProducts()
+    const [reviews] = useReviews()
     
     
 
     const data = [
         { name: "All Users", value: users?.length },
         { name: "All Products", value: products?.length },
-        { name: "All Reviews", value: 10 },
+        { name: "All Reviews", value: reviews?.length },
        
     ];
     const COLORS = ['#69a533', '#FDBB2F', '#007CC3'];
