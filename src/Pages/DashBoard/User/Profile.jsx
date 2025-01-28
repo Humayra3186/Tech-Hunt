@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import useUser from '../../../Hooks/useUser';
 import { MdVerified } from "react-icons/md";
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 const Profile = () => {
     const { user, payment, setPayment } = useContext(AuthContext)
@@ -23,15 +24,22 @@ const Profile = () => {
          axiosSecure.get(`/coupon?code=${code}`)
          .then(res=>{
             if(!res.data){
-               return (toast.error("Invalid coupon"))
+                (toast.error("Invalid coupon"))
+               document.getElementById("my_modal_5").close()
+               return
             }
 
             if(new Date(res.data?.exDate) < new Date()){
-                return (toast.error("Expired coupon"))
+               
+                 (toast.error("Expired coupon"))
+                 document.getElementById("my_modal_5").close()
+                 return
              }
                
              const newAmount =(payment-(payment* res.data?.amount)) 
             setPayment(newAmount)
+            toast.success(`Get ${res.data?.amount*100} % discount`)
+            document.getElementById("my_modal_5").close()
             
          })
     }
@@ -63,7 +71,7 @@ const Profile = () => {
 
                                 </> : <>
                                     <div className='flex flex-col lg:flex-row pb-4 gap-3 '>
-                                        <Link to={"/dashboard/dashboard/payment"}>  <button className='btn-color py-1 px-[2rem] rounded-lg'>pay : {payment}$</button></Link>
+                                        <Link to={"/dashboard/dashboard/payment"}>  <button className='btn-color py-1 px-[2rem] text-[1.2rem] font-semibold rounded-lg'>pay : <span className='text-red-700'>{payment}$</span></button></Link>
                                         <button onClick={()=>document.getElementById('my_modal_5').showModal()} className='btn-color py-1 px-[1.8rem] rounded-lg'>use Coupon</button>
                                     </div>
                                 </>
@@ -97,7 +105,7 @@ const Profile = () => {
                     <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
+                            <button className="btn hidden">Close</button>
                         </form>
                     </div>
                 </div>

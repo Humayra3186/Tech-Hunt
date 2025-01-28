@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { format } from 'date-fns';
 import { Zoom } from 'react-awesome-reveal';
+import Modal from './Modal';
 
 const ManageCoupons = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -80,6 +81,7 @@ const ManageCoupons = () => {
 
     }
 
+
     return (
         <div>
 
@@ -116,12 +118,15 @@ const ManageCoupons = () => {
                                
                                 
                                 <td className='flex'>
-                                     <button className='btn-color px-6 py-1 rounded-2xl'>
+                                     <button onClick={() => document.getElementById(`${index}`).showModal()} className='btn-color px-6 py-1 rounded-2xl'>
                                         Edit
                                     </button>
                                     <button onClick={()=>{handleDelete(coupon?._id)}}  className='text-white bg-red-600 px-6 py-1 rounded-2xl ml-6'  >
                                        Delete
                                     </button>
+                                </td>
+                                <td>
+                   <Modal index={index} id={coupon?._id} coupon={coupon} fetchCoupons={fetchCoupons}></Modal>
                                 </td>
                             </tr>
                         )}
@@ -165,6 +170,8 @@ const ManageCoupons = () => {
                 </div>
                 <button  className="btn btn-color mt-6">Submit</button>
             </form>
+
+           
         </div>
     );
 };

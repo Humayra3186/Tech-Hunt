@@ -37,6 +37,7 @@ const CheckoutForm = () => {
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
+        setLoader(true)
         
         
         if (!stripe || !elements) {
@@ -103,11 +104,12 @@ const CheckoutForm = () => {
       
     }
     return (
-      <>
-      {
-        loader?<>
-        <p>loading...</p></>:
+      
+     
         <>
+        {
+          loader && <p className='text-[1.2rem] font-semibold text-center my-6'>Please wait for 1 minute...</p>
+        }
         <div style={{
                    backgroundImage: `url(${bg})`,
                }}  className='relative md:w-[60%] lg:w-[40%] h-[12rem] py-4 mx-auto  bg-center bg-cover bg-no-repeat rounded-md'>
@@ -137,8 +139,7 @@ const CheckoutForm = () => {
      
     </form>
        </div></>
-      }
-      </>
+     
      
        
     );
