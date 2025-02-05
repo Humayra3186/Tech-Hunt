@@ -9,7 +9,14 @@
 
 ## Purpose
 - Tech Hunt is a platform where users can discover, explore, and stay updated on the latest gadgets, tech products, and innovations. It features curated product reviews, tech news, comparisons, and recommendations to help tech enthusiasts and shoppers make informed decisions. .  
-
+## Main Technologies 
+- Frontend: React.js , Tailwind CSS  
+- Backend: Node.js , Express.js   
+- Database: MongoDB  
+- Authentication: Firebase   
+- State Management: TanStack Query, Context API   
+- Hosting: Vercel , Netlify
+- Stripe : For payment
 ## Key Features
 - Admin , Moderator And User role control 
 - Use coupon
