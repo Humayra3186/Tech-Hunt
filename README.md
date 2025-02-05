@@ -41,7 +41,7 @@
 - Can Report and review other users' products
 
  
-## Used NPM package
+## Used Dependencies
    
    - Swiper js for slider
    - React Awesome reveal 
@@ -50,5 +50,21 @@
    - react-stars
    - tanstack query
    - React Hook Form
- 
+     
+##  Installation & Setup  
+
+## Clone the repository
+git clone https://github.com/Humayra3186/Hotel-Westin.git
+
+## Navigate to the project directory
+cd Hotel-Westin
+
+## Install dependencies
+npm install
+tanstack query
+axios
+
+## Start 
+npm run dev
+   
   
