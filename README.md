@@ -54,17 +54,17 @@
 ##  Installation & Setup  
 
 ## Clone the repository
-git clone https://github.com/Humayra3186/Hotel-Westin.git
+https://github.com/Humayra3186/Tech-Hunt.git
 
 ## Navigate to the project directory
-cd Hotel-Westin
+- cd Tech-Hunt
 
 ## Install dependencies
-npm install
-tanstack query
-axios
+- npm install
+- tanstack query
+- axios
 
 ## Start 
-npm run dev
+- npm run dev
    
   
